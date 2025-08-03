@@ -1,114 +1,106 @@
-# 📊 Sales Forecasting with Time Series Analysis
+# 🛒 Retail Sales Forecasting App
 
-A dynamic web app for comparing **ARIMAX** and **LSTM** models to forecast retail sales, built using Streamlit. It enables users to explore trends, compare forecasts, and upload custom datasets for live predictions.
+A user-friendly and interactive Streamlit web app for sales forecasting and customer analysis. Supports both regression (for continuous targets) and classification (for categorical targets) with options to upload custom CSVs, explore visualizations, and make predictions.
 
----
+## 🚀 Features
 
-## 🔧 Features
-
-- 📈 **Visualize** actual vs predicted sales from ARIMAX and LSTM models  
-- ⚙️ **Train LSTM live** with adjustable epochs and learning rate (coming soon)  
-- 🧪 **Compare models** side-by-side  
-- 📁 **Upload CSVs** to test your own datasets  
-- 📦 View trends of exogenous variables: `preco` (price) and `estoque` (stock)  
-- 🌍 **Deployable** on [Streamlit Cloud](https://streamlit.io/cloud)  
-
----
-
-## 📂 Project Structure
-
-```
-sales-forecasting/
-│
-├── app/
-│   ├── streamlit_app.py            # Main Streamlit dashboard
-│   ├── add_dummy_lstm.py           # Dummy LSTM model (for demo)
-│
-├── data/
-│   └── arimax_forecast_output.csv  # Sample dataset with actual + forecasted values
-│
-├── models/                         # Folder for saving trained models (if needed)
-│
-└── README.md
-```
+- 📂 Upload your own CSV datasets (limit: 200MB)
+- 🔧 Choose Target (y) and Feature (X) variables from the UI
+- 🤖 Supports **Regression** (e.g., predicting sales amount) and **Classification** (e.g., predicting customer gender)
+- 📈 Model training with performance metrics:
+  - RMSE, MAE, R² for Regression
+  - Accuracy for Classification
+- 🔍 Auto-detection of categorical vs numerical targets
+- 📊 Data visualization:
+  - Seaborn plots (distribution, correlation heatmap)
+  - 3D plots for numeric features (e.g., Age vs Income vs Spending Score)
+- 🔁 Map encoded target labels back to original names (e.g., 0 → Female)
+- 🌐 Deployable on Streamlit Cloud
+- 📤 Upload test data and download predictions
 
 ---
 
-## 🧪 Sample Dataset Format
+## 🖥️ Tech Stack
 
-Your CSV must include the following columns:
-
-| Column                 | Description                         |
-|------------------------|-------------------------------------|
-| `date`                 | Date column (YYYY-MM-DD format)     |
-| `actual_sales`         | Ground truth sales data             |
-| `predicted_sales_arimax` | ARIMAX model forecast             |
-| `predicted_sales_lstm`   | LSTM model forecast               |
-| `preco`                | Product price                       |
-| `estoque`              | Available stock                     |
+- **Frontend**: Streamlit
+- **Backend**: Scikit-learn, Pandas, Numpy
+- **Visualization**: Matplotlib, Seaborn, Plotly (for 3D)
+- **Modeling**: LinearRegression, LogisticRegression
 
 ---
 
-## 🚀 How to Run Locally
+## 📦 Installation
 
-1. **Clone the repo**
+1. **Clone the repository**:
    ```bash
-   git clone https://github.com/22MH1A4242/sales-forecasting.git
-   cd sales-forecasting/app
+   git clone https://github.com/your-username/sales-forecasting.git
+   cd sales-forecasting
    ```
 
-2. **Install dependencies**
+2. **Create a virtual environment** (optional):
    ```bash
-   pip install -r ../requirements.txt
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
    ```
 
-3. **Run the app**
+3. **Install dependencies**:
    ```bash
-   streamlit run streamlit_app.py
+   pip install -r requirements.txt
+   ```
+
+4. **Run the app**:
+   ```bash
+   streamlit run app/streamlit_app.py
    ```
 
 ---
 
-## 📤 Upload Custom CSV
+## 📂 Sample Dataset
 
-You can use the sidebar upload to visualize your own dataset. Make sure your CSV includes:
+You can use the included sample file:
+- [`Mall_Customers.csv`](./data/Mall_Customers.csv)
 
-- A `date` column
-- `actual_sales`, and optionally forecasts (`predicted_sales_arimax`, `predicted_sales_lstm`)
-- Optionally: `preco`, `estoque`
-
----
-
-## 📈 Live Training (Coming Soon)
-
-- Set **epochs**, **learning rate**, and **hidden units**
-- Train LSTM on uploaded data and visualize real-time loss and predictions
+or upload your own CSV.
 
 ---
 
-## 📌 Future Enhancements
+## 📌 How to Use
 
-- ✅ Exogenous variable visualizations (done)
-- ✅ CSV upload support (done)
-- 🧠 Live LSTM training
-- 🧪 Model performance comparison (RMSE, MAE)
-- 📦 Model download/export
-
----
-
-## 🧠 Built With
-
-- [Streamlit](https://streamlit.io/)
-- [Pandas](https://pandas.pydata.org/)
-- [Matplotlib](https://matplotlib.org/)
-- [NumPy](https://numpy.org/)
-- [TensorFlow/Keras](https://www.tensorflow.org/) *(for LSTM)*  
-- [statsmodels](https://www.statsmodels.org/) *(for ARIMAX)*
+1. Upload your dataset.
+2. Preview the data and select the target and features from the sidebar.
+3. App detects classification vs regression.
+4. Model is trained automatically.
+5. See evaluation metrics and visualizations.
+6. (Optional) Upload test data for predictions.
+7. Download results if needed.
 
 ---
 
-## 📬 Contact
+## 🧪 Example Use Cases
+
+- Predict customer spending or sales based on demographic data
+- Classify customers into segments (e.g., gender, age group)
+- Analyze trends using uploaded retail datasets
+
+---
+
+## 🌐 Deploy to Streamlit Cloud
+
+1. Push your code to GitHub.
+2. Go to [streamlit.io/cloud](https://streamlit.io/cloud)
+3. Connect your repo and set the entry point to `app/streamlit_app.py`
+
+---
+
+## 👤 Author
 
 **Anjali Devi Medapati**  
 📧 medapattanjalidevi@gmail.com  
-🔗 [GitHub Profile](https://github.com/22MH1A4242)
+🔗 [GitHub](https://github.com/22MH1A4242)
+
+---
+
+## 📄 License
+
+This project is open-source and free to use under the MIT License.
+
