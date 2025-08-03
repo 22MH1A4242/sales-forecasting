@@ -1,11 +1,6 @@
+streamlit
 pandas
 numpy
 matplotlib
-seaborn
-plotly
 scikit-learn
-statsmodels
-tensorflow
-streamlit
-prophet
-openpyxl
+seaborn
